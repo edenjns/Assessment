@@ -1,0 +1,182 @@
+header,
+nav,
+article,
+footer {
+	display: block;
+}
+
+body {
+	background-color: #FEF9FB; 
+	
+	font-size: 16px;
+	margin: 0;
+} 
+
+#container {
+	width: 1100px;
+	margin: auto;  
+	height: 100%;
+	/**background-color: #e6e6e6; **/
+}
+
+header {
+	padding: 5px 10px;  
+	background-color:  #FFF6A9;
+	text-align: center;
+	border-style: bold;
+	border: #44318D;
+}
+
+h1{
+	font-family: 'Montserrat', sans-serif;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 3em;
+	color: white; 
+}
+	
+h2{
+	color: #000;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.3em;
+}
+
+nav {
+	padding: 10px 25px;
+	font-size: 1em;
+	background-color: #D83F87;
+	border-style: solid;
+	border-width: 1px 0 0 0;
+	border-color: #D83F87;
+	overflow: hidden;
+ }
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+	
+nav ul li {
+	list-style: none;
+	color: black;
+	margin: 0 2.5em 0 0;
+	padding: 0;
+	float: left;
+	font-size: 1.0em;
+}
+
+a:visited{
+	color: white;
+}
+
+a:hover{
+	color: #44318D; /*Change to the clour of header background*/
+	
+}
+
+aside{
+	width: 160px;
+	padding: 15px;
+	font-family: Arial, Verdana, sans-serif;
+	background-color: #FFF8C2;
+	float: left;
+	height: 100%;
+	
+}
+
+aside p{
+	font-size: 0.8em;	
+	line-height: 1.5em;
+}
+
+aside h2{
+	color:#000;
+	font-size: 1.1em;
+	font-family: 'Open Sans', sans-serif;
+}
+
+article{
+	padding: 20px;
+	background-color: white;
+	overflow: hidden;
+	float: left;
+	width: 450px;
+}
+
+
+#bslideshow{
+	width: 708px;
+	overflow: hidden;
+	height: 460px;
+	background-color: #FEF9FB;
+}
+
+
+#slideshow{
+	text-align: center;
+	margin: 2px;
+}
+
+
+#images{
+	text-align: center;
+	padding: 0px;
+	width: 333px;
+	float: left;
+	overflow: hidden;
+	
+}
+
+#profimages{
+	text-align: center;
+	padding: 0px;
+	width: 332px;
+	float: left;
+	overflow: hidden;
+}
+
+
+
+p{
+	
+	font-family: 'Montserrat', sans-serif;
+	font-size: .8em;
+	color: #050505;
+	line-height: 1.5em;
+}
+
+li{
+	font-family: 'Montserrat', sans-serif;
+	font-size: .8em;
+	color: #050505;
+	
+}
+
+img {
+	float: left;	
+	border: 6px solid #999A9E;
+}
+
+footer {
+	background-color: #44318D;
+	padding: 0 20px 2px 20px;
+    text-align: center;
+	overflow: auto;	/**This will make the footer hold all the elements in it**/	
+	clear: both;
+}
+  
+footer p{
+	color: #ffe6ff;
+	font-family: Georgia, serif;
+	font-size: 0.9em;
+}
+
+#smalltext {
+	font-size: 0.7em;
+	text-align: center;
+	color: #ffffff;
+}
+
+		
+  	
