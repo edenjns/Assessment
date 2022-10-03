@@ -74,16 +74,16 @@ $this_special_info = mysqli_fetch_assoc($this_special_result);
 <head>  
 		<meta charset="UTF-8">   
 		<title>Specials</title> 
-		<meta name="description" content="Index" />  
-		<meta name="author" content="Eden Johns" />
-		<meta name="robots" content= "noindex, nofollow" /> 
+		<meta name="description" content="Index" >  
+		<meta name="author" content="Eden Johns" >
+		<meta name="robots" content= "noindex, nofollow" >
 		<link rel="stylesheet" type="text/css" href="styles.css"> 
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
 	</head>
-	
+	<body>
 	<header>
-				<h1>Specials</h1>
+				<h1>Weekly Specials</h1>
 			</header>
 			
 	<nav>
@@ -91,15 +91,20 @@ $this_special_info = mysqli_fetch_assoc($this_special_result);
 					<li><a href="index.html" style="text-decoration: none">Home</a></li>
 					<li><a href="foods.php" style="text-decoration: none">Foods</a></li>
 					<li><a href="drinks.php" style="text-decoration: none">Drinks</a></li>
-					<li><a href="specials.php" style="text-decoration: none">Specials</a></li>
+					<li><a href="specials.php" style="text-decoration: none">Weekly Specials</a></li>
 				</ul>
 			</nav>	
-<body>
 
 <main>
     
 	<div id = "container">
 		<article>
+			
+			<br>
+			<h2>Select Special</h2>
+			<br>
+			<br>
+			
     <!-- Dropdown Specials form-->
     <!--name for php; id for css; action page we go to when button clicked-->
     <form name='specials_form' id='specials_form' method='get' action='specials.php'>
@@ -120,6 +125,9 @@ $this_special_info = mysqli_fetch_assoc($this_special_result);
         <input type="submit" name="specials_button" value="Show specials info">
     </form>
 		
+			<br>
+			<h2>Special Information</h2>
+			
 	<?php
 			echo"<p> Food: " . $this_special_info['food'] . "</p>";
 			echo"<p> Drink: " . $this_special_info['drink'] . "</p>";
@@ -134,9 +142,9 @@ $this_special_info = mysqli_fetch_assoc($this_special_result);
 	</article>
 		</div>
 </main>
-</body>
 	<footer>
 			<p>&copy; Eden Johns, 2022 </p>
 			<p id="smalltext"> Image Credits: </p>
 	</footer>
+	</body>
 </html>
