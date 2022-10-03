@@ -16,7 +16,7 @@ if(isset($_GET['food_sel'])){
 	$id = 1;
 }
 
-/*Defining the food form*/
+/*Defining the sort form*/
 if(isset($_GET['sort_sel'])){
 	$sort_id = $_GET['sort_sel'];
 }else{
@@ -30,7 +30,7 @@ $food_query = "SELECT food
 /*query the database*/
 $food_result = mysqli_query($dbcon, $food_query);
 
-/*Foods query - SELECT drink id, item from foods */
+/*Foods query - SELECT food id, food from foods */
 $all_foods_query = "SELECT * FROM foods";
 $all_foods_result = mysqli_query($dbcon, $all_foods_query);
 
@@ -43,14 +43,14 @@ if($food_rows > 0) {
     echo "No results found.";
 }
 
-/*Query for displaying drink information*/
+/*Query for displaying food information*/
 $this_food_query = "SELECT food,cost,calories,sweet_sav
 					 FROM foods 
 					 WHERE food_id = '" . $id . "'";
 $this_food_result = mysqli_query($dbcon, $this_food_query);
 $this_food_record = mysqli_fetch_assoc($this_food_result);
 
-/*Display sort by options*/
+/*Query for displaying sort by options*/
 $sort_query = "SELECT sort_name
 			   FROM foods_sort_table
 			   WHERE sort_id = 1";
@@ -58,62 +58,59 @@ $sort_query = "SELECT sort_name
 /*query the database*/
 $sort_result = mysqli_query($dbcon, $sort_query);
 
-/*Foods query - SELECT sort id, sort name from foods */
+/*Sort query - SELECT sort id, sort name from foods */
 $all_sort_query = "SELECT * FROM foods_sort_table";
 $all_sort_result = mysqli_query($dbcon, $all_sort_query);
 
 
-/*Sorting the foods form*/
-/*Query for sort form*/
+/*Sorting the sort form*/
+/*Query for sort form to sort the food menu*/
+/*Sort food by ascending*/
 if($sort_id == 1){
 	$all_foods_query = "SELECT food_id, food
 					FROM foods
 					ORDER BY food ASC";
 	$all_foods_result = mysqli_query($dbcon, $all_foods_query);
+	
+/*Sort food by descending*/
 }elseif($sort_id == 2){
 	$all_foods_query = "SELECT food_id, food
 					FROM foods
 					ORDER BY food DESC";
 	$all_foods_result = mysqli_query($dbcon, $all_foods_query);
+	
+/*Sort food by cost ascending*/
 }elseif($sort_id == 3){
 	$all_foods_query = "SELECT food_id , food
 					FROM foods
 					ORDER BY cost ASC
 					";
 	$all_foods_result = mysqli_query($dbcon, $all_foods_query);
+	
+/*Sort food by cost descending*/
 }elseif($sort_id == 4){
 	$all_foods_query = "SELECT food_id , food
 					FROM foods
 					ORDER BY cost DESC
 					";
 	$all_foods_result = mysqli_query($dbcon, $all_foods_query);
+	
+/*Sort food by sweet*/
 }elseif($sort_id == 5){
 	$all_foods_query = "SELECT food_id , food
 					FROM foods
-					WHERE sweet_other = 'Sweet'
+					WHERE sweet_sav = 'Sweet'
 					";
 	$all_foods_result = mysqli_query($dbcon, $all_foods_query);
+	
+/*Sort food by savoury*/
 }elseif($sort_id == 6){
-	$all_foods_query = "SELECT food_id , drink
+	$all_foods_query = "SELECT food_id , food
 					FROM foods
-					WHERE sweet_other = 'Other'
+					WHERE sweet_sav = 'Savoury'
 					";
 	$all_foods_result = mysqli_query($dbcon, $all_foods_query);
 }
-
-
-
-/* Store the query results*/
-/* Remove if in while loop*/
-/*$all_foods_record = mysqli_fetch_assoc($all_foods_result);*/
-
-/* Query the database */
-
-
-/* Store the query results*/
-/* Remove if in while loop*/
-/*$all_orders_record = mysqli_fetch_assoc($all_orders_result);*/
-
 
 ?>
 
@@ -123,14 +120,14 @@ if($sort_id == 1){
 <head>  
 		<meta charset="UTF-8">   
 		<title>Foods</title> 
-		<meta name="description" content="Index" />  
-		<meta name="author" content="Eden Johns" />
-		<meta name="robots" content= "noindex, nofollow" /> 
+		<meta name="description" content="Index" >  
+		<meta name="author" content="Eden Johns" >
+		<meta name="robots" content= "noindex, nofollow" > 
 		<link rel="stylesheet" type="text/css" href="styles.css"> 
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
 	</head>
-	
+	<body>
 	<header>
 				<h1>Canteen Foods</h1>
 			</header>
@@ -143,11 +140,7 @@ if($sort_id == 1){
 					<li><a href="specials.php" style="text-decoration: none">Specials</a></li>
 				</ul>
 			</nav>	
-<body>
-
-
 <main>
-	
 	<div id="container">
 	
 		<article>
@@ -168,14 +161,14 @@ if($sort_id == 1){
             /* Display the query results into an option tag*/
             while($all_foods_record = mysqli_fetch_assoc($all_foods_result)){
                 echo "<option value ='".$all_foods_record['food_id'] ."'>";
-                echo $all_foods_record['food'];   // Show the drink name in the option box
+                echo $all_foods_record['food'];   // Show the food name in the option box
                 echo "</option>";
             }
             ?>
         </select>
 		
 	
-		<!--food button-->
+		<!--Food button-->
         <input type="submit" name="foods_button" value="Show food info">
 		
     </form>
@@ -205,6 +198,8 @@ if($sort_id == 1){
 			<br>
 			
 			<h2>Food Information</h2>
+			
+	<!-- Food Information Display-->
 	<?php
 			
 			echo"<p> Food: " . $this_food_record['food'] . "<br>";
@@ -216,14 +211,10 @@ if($sort_id == 1){
 
 	</article>
 		</div>
-	<!-- Food Information Display-->
 	
-        
-    
 </main>
-</body>
 	<footer>
 			<p>&copy; Eden Johns, 2022 </p>
-			<p id="smalltext"> Image Credits: </p>
 	</footer>
+	</body>
 </html>

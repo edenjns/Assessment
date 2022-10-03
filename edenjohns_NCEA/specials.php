@@ -8,7 +8,7 @@ if($dbcon == NULL) {
     exit();
 }
 
-/*Defining the food form*/
+/*Defining the special form*/
 if(isset($_GET['special_sel'])){
 	$special_id = $_GET['special_sel'];
 }else{
@@ -17,14 +17,14 @@ if(isset($_GET['special_sel'])){
 
 
 	
-/*SQL query to return all drinks*/
+/*SQL query to return all specials*/
 $special_query = "SELECT day, special_id 
 				  FROM specials";
 
 /*query the database*/
 $special_result = mysqli_query($dbcon, $special_query);
 
-/*Drinks query - SELECT drink id, item from drinks */
+/*specials query - SELECT drink id, item from specials */
 $all_specials_query = "SELECT * 
 					   FROM specials";
 	
@@ -50,20 +50,6 @@ $this_special_query = "SELECT foods.food, drinks.drink, specials.cost
 $this_special_result = mysqli_query($dbcon, $this_special_query);
 $this_special_info = mysqli_fetch_assoc($this_special_result);
 
-	
-	
-/* Store the query results*/
-/* Remove if in while loop*/
-/*$all_drinks_record = mysqli_fetch_assoc($all_drinks_result);*/
-
-/* Query the database */
-/*$all_orders_query = "SELECT order_id FROM orders ORDER BY order_id ASC";*/
-/*$all_specials_result = mysqli_query($dbcon, $all_specials_query);*/
-
-/* Store the query results*/
-/* Remove if in while loop*/
-/*$all_orders_record = mysqli_fetch_assoc($all_orders_result);*/
-
 
 ?>
 
@@ -74,14 +60,14 @@ $this_special_info = mysqli_fetch_assoc($this_special_result);
 <head>  
 		<meta charset="UTF-8">   
 		<title>Specials</title> 
-		<meta name="description" content="Index" />  
-		<meta name="author" content="Eden Johns" />
-		<meta name="robots" content= "noindex, nofollow" /> 
+		<meta name="description" content="Index" >  
+		<meta name="author" content="Eden Johns" >
+		<meta name="robots" content= "noindex, nofollow" >
 		<link rel="stylesheet" type="text/css" href="styles.css"> 
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
 	</head>
-	
+	<body>
 	<header>
 				<h1>Weekly Specials</h1>
 			</header>
@@ -94,12 +80,17 @@ $this_special_info = mysqli_fetch_assoc($this_special_result);
 					<li><a href="specials.php" style="text-decoration: none">Weekly Specials</a></li>
 				</ul>
 			</nav>	
-<body>
 
 <main>
     
 	<div id = "container">
 		<article>
+			
+			<br>
+			<h2>Select Special</h2>
+			<br>
+			<br>
+			
     <!-- Dropdown Specials form-->
     <!--name for php; id for css; action page we go to when button clicked-->
     <form name='specials_form' id='specials_form' method='get' action='specials.php'>
@@ -120,6 +111,9 @@ $this_special_info = mysqli_fetch_assoc($this_special_result);
         <input type="submit" name="specials_button" value="Show specials info">
     </form>
 		
+			<br>
+			<h2>Special Information</h2>
+			
 	<?php
 			echo"<p> Food: " . $this_special_info['food'] . "</p>";
 			echo"<p> Drink: " . $this_special_info['drink'] . "</p>";
@@ -134,9 +128,8 @@ $this_special_info = mysqli_fetch_assoc($this_special_result);
 	</article>
 		</div>
 </main>
-</body>
 	<footer>
 			<p>&copy; Eden Johns, 2022 </p>
-			<p id="smalltext"> Image Credits: </p>
 	</footer>
+	</body>
 </html>

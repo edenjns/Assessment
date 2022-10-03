@@ -55,34 +55,45 @@ $all_sort_result = mysqli_query($dbcon, $all_sort_query);
 
 /*Sorting the drinks form*/
 /*Query for sort form*/
+/*Sort drink by ascending*/
 if($sort_id == 1){
 	$all_drinks_query = "SELECT drink_id, drink
 					FROM drinks
 					ORDER BY drink ASC";
 	$all_drinks_result = mysqli_query($dbcon, $all_drinks_query);
+	
+/*Sort drink by descending*/
 }elseif($sort_id == 2){
 	$all_drinks_query = "SELECT drink_id, drink
 					FROM drinks
 					ORDER BY drink DESC";
 	$all_drinks_result = mysqli_query($dbcon, $all_drinks_query);
+	
+/*Sort drink by cost ascending*/
 }elseif($sort_id == 3){
 	$all_drinks_query = "SELECT drink_id , drink
 					FROM drinks
 					ORDER BY cost ASC
 					";
 	$all_drinks_result = mysqli_query($dbcon, $all_drinks_query);
+	
+/*Sort drink by cost descending*/
 }elseif($sort_id == 4){
 	$all_drinks_query = "SELECT drink_id , drink
 					FROM drinks
 					ORDER BY cost DESC
 					";
 	$all_drinks_result = mysqli_query($dbcon, $all_drinks_query);
+	
+/*Sort drink by sweet*/
 }elseif($sort_id == 5){
 	$all_drinks_query = "SELECT drink_id , drink
 					FROM drinks
 					WHERE sweet_other = 'Sweet'
 					";
 	$all_drinks_result = mysqli_query($dbcon, $all_drinks_query);
+	
+/*Sort drink by other*/
 }elseif($sort_id == 6){
 	$all_drinks_query = "SELECT drink_id , drink
 					FROM drinks
@@ -92,22 +103,6 @@ if($sort_id == 1){
 }
 
 
-
-/*$this_sort_result = mysqli_query($dbcon, $this_sort_query);
-$this_sort_record = mysqli_fetch_assoc($this_sort_result);*/
-	
-
-
-/* Store the query results*/
-/* Remove if in while loop*/
-/*$all_drinks_record = mysqli_fetch_assoc($all_foods_result);*/
-
-/* Query the database */
-
-
-/* Store the query results*/
-/* Remove if in while loop*/
-/*$all_orders_record = mysqli_fetch_assoc($all_orders_result);*/
 
 
 ?>
@@ -119,14 +114,14 @@ $this_sort_record = mysqli_fetch_assoc($this_sort_result);*/
 <head>  
 		<meta charset="UTF-8">   
 		<title>Drink</title> 
-		<meta name="description" content="Index" />  
-		<meta name="author" content="Eden Johns" />
-		<meta name="robots" content= "noindex, nofollow" /> 
+		<meta name="description" content="Index" >  
+		<meta name="author" content="Eden Johns" >
+		<meta name="robots" content= "noindex, nofollow" > 
 		<link rel="stylesheet" type="text/css" href="styles.css"> 
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
 	</head>
-	
+	<body>
 	<header>
 				<h1>Canteen Drinks</h1>
 			</header>
@@ -139,7 +134,7 @@ $this_sort_record = mysqli_fetch_assoc($this_sort_result);*/
 					<li><a href="specials.php" style="text-decoration: none">Weekly Specials</a></li>
 				</ul>
 			</nav>	
-<body>
+
 
 
 <main>
@@ -214,9 +209,10 @@ $this_sort_record = mysqli_fetch_assoc($this_sort_result);*/
     
          
 </main>
-</body>
+
 	<footer>
 			<p>&copy; Eden Johns, 2022 </p>
 			<p id="smalltext"> Image Credits: </p>
 	</footer>
+	</body>
 </html>
